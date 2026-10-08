@@ -16,12 +16,21 @@ class MyApp extends StatelessWidget {
         body: ListView(
           padding: const EdgeInsets.all(16.0),
           children: const [
-            Text('1. Kustomisasi TextStyle', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            Text(
+              '1. Kustomisasi TextStyle',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
             FontTextWidget(),
             Divider(),
             SpacingTextWidget(),
             Divider(),
             DecorationTextWidget(),
+            Divider(),
+            Text(
+              '2. Tata Letak & Perataan',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            LayoutTextWidget(),
           ],
         ),
       ),
@@ -38,8 +47,14 @@ class FontTextWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Normal', style: TextStyle(fontSize: 20)),
-        Text('Bold', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        Text('Italic', style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic)),
+        Text(
+          'Bold',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          'Italic',
+          style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+        ),
       ],
     );
   }
@@ -53,11 +68,20 @@ class SpacingTextWidget extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Letter Spacing', style: TextStyle(fontSize: 20, letterSpacing: 5)),
+        Text(
+          'Letter Spacing',
+          style: TextStyle(fontSize: 20, letterSpacing: 5),
+        ),
         SizedBox(height: 10),
-        Text('Word Spacing Example', style: TextStyle(fontSize: 20, wordSpacing: 10)),
+        Text(
+          'Word Spacing Example',
+          style: TextStyle(fontSize: 20, wordSpacing: 10),
+        ),
         SizedBox(height: 10),
-        Text('Line 1\nLine 2\nLine 3', style: TextStyle(fontSize: 20, height: 2)),
+        Text(
+          'Line 1\nLine 2\nLine 3',
+          style: TextStyle(fontSize: 20, height: 2),
+        ),
       ],
     );
   }
@@ -71,9 +95,15 @@ class DecorationTextWidget extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Underline', style: TextStyle(fontSize: 20, decoration: TextDecoration.underline)),
+        Text(
+          'Underline',
+          style: TextStyle(fontSize: 20, decoration: TextDecoration.underline),
+        ),
         SizedBox(height: 15),
-        Text('Background', style: TextStyle(fontSize: 20, backgroundColor: Colors.yellow)),
+        Text(
+          'Background',
+          style: TextStyle(fontSize: 20, backgroundColor: Colors.yellow),
+        ),
         SizedBox(height: 15),
         Text(
           'Text Shadow',
@@ -85,6 +115,36 @@ class DecorationTextWidget extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class LayoutTextWidget extends StatelessWidget {
+  const LayoutTextWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(border: Border.all()),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text('Right Alignment', textAlign: TextAlign.right),
+          SizedBox(height: 10),
+          Text(
+            'Justify: Flutter adalah framework untuk membuat aplikasi menggunakan satu codebase.',
+            textAlign: TextAlign.justify,
+          ),
+          SizedBox(height: 10),
+          Text(
+            'Teks ini dipotong jika terlalu panjang karena properti ellipsis pada overflow.',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
     );
   }
 }
